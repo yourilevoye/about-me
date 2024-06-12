@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <title>Youri Levoye</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">Youri Levoye</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">
+                            <i class="uil uil-estate nav__icon"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            <i class="uil uil-user nav__icon"></i> About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#skills" class="nav__link">
+                            <i class="uil uil-file-alt nav__icon"></i> Skills
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link">
+                            <i class="uil uil-scenery nav__icon"></i> Portfolio
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
+            <div class="nav_buttons">
+
+                <!-- Theme change button  -->
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home"></section>
+
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about"></section>
+
+        <!--==================== SKILLS ====================-->
+        <section class="skills section" id="skills"></section>
+
+        <!--==================== PORTFOLIO ====================-->
+        <section class="portfolio section" id="portfolio"></section>
+
+        <!--==================== QUALIFICATION ====================-->
+        <section class="qualification section" id="qualification"></section>
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__bg">
+            <p class="footer__copy">Last updated: June 2024</p>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+    <!--==================== SWIPER JS ====================-->
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+
+    <!--==================== MAIN JS ====================-->
+    <script src="./assets/js/main.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            <!--==================== HOME SECTION ====================-->
+            fetch('components/home.html')
+                .then(response => response.text())
+                .then(data => document.querySelector('#home').innerHTML = data);
+
+            <!--==================== ABOUT SECTION ====================-->
+            fetch('components/about.html')
+                .then(response => response.text())
+                .then(data => document.querySelector('#about').innerHTML = data);
+
+            <!--==================== SKILLS SECTION ====================-->
+            fetch('components/skills.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('#skills').innerHTML = data;
+
+                    const skillsContent = document.getElementsByClassName('skills__content');
+                    const skillsHeader = document.querySelectorAll('.skills__header');
+
+                    function toggleSkills() {
+                        let itemClass = this.parentNode.className;
+
+                        for (let i = 0; i < skillsContent.length; i++) {
+                            skillsContent[i].className = 'skills__content skills__close';
+                        }
+                        if (itemClass === 'skills__content skills__close') {
+                            this.parentNode.className = 'skills__content skills__open';
+                        }
+                    }
+
+                    skillsHeader.forEach((el) => {
+                        el.addEventListener('click', toggleSkills);
+                    });
+                });
+
+            <!--==================== PORTFOLIO SECTION ====================-->
+            fetch('components/portfolio.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('#portfolio').innerHTML = data;
+                    let swiperPortfolio = new Swiper(".portfolio__container", {
+                        cssMode: true,
+                        loop: true,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                        },
+                    });
+                });
+
+            <!--==================== QUALIFICATION SECTION ====================-->
+            fetch('components/qualification.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('#qualification').innerHTML = data;
+
+                    const tabs = document.querySelectorAll('[data-target]');
+                    const tabContents = document.querySelectorAll('[data-content]');
+
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            const target = document.querySelector(tab.dataset.target);
+
+                            tabContents.forEach(tabContent => {
+                                tabContent.classList.remove('qualification__active');
+                            });
+                            target.classList.add('qualification__active');
+
+                            tabs.forEach(tab => {
+                                tab.classList.remove('qualification__active');
+                            });
+                            tab.classList.add('qualification__active');
+                        });
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>
