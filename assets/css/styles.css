@@ -554,7 +554,7 @@ img {
 }
 
 .qualification__button {
-  font-size: var(--h3-font-size);
+  font-size: var(--h3-font-size)/2;
   font-weight: var(--font-medium);
   cursor: pointer;
 }
