@@ -1193,7 +1193,7 @@ img {
   }
 
   .qualification__sections {
-    grid-template-columns: 0.5fr;
+    grid-template-columns: 0.8fr;
   }
 
   .services__icon {
