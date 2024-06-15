@@ -20,6 +20,11 @@
 </head>
 
 <body>
+    <!--=================== LOADING ANIM ===============-->
+    <div id="loading">
+        <img src="./assets/img/loading.gif" alt="Loading..." />
+        <div id="loading__text">The icon "Double Ring" is provided by <a href="https://loading.io/icon/">loading.io</a></div>
+    </div>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
@@ -104,6 +109,19 @@
     <script src="./assets/js/main.js"></script>
 
     <script>
+        <!--==================== LOADING ANIM ====================-->
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loadingDiv = document.getElementById('loading');
+                loadingDiv.style.opacity = '0';
+                // Wait for the transition to finish before setting display to 'none'
+                setTimeout(function() {
+                    loadingDiv.style.display = 'none';
+                }, 500); // This should match the duration of the opacity transition found in styles.css!
+            }, 2000); // Minimum time for the loading animation
+        });
+
+        <!--==================== CONTENTS ====================-->
         window.addEventListener('DOMContentLoaded', (event) => {
             <!--==================== HOME SECTION ====================-->
             fetch('components/home.html')
