@@ -572,21 +572,16 @@ img {
   background-color: var(--first-color);
 }
 
-.skills__html {
-  width: 0%;
-}
-
-.skills__css {
-  width: 0%;
-}
-
-.skills__js {
-  width: 0%;
-}
-
-.skills__github{
-  width: 0%;
-}
+/* Skills list */
+.skills__percentage.skills__java { width: 90%; }
+.skills__percentage.skills__js { width: 75%; }
+.skills__percentage.skills__python { width: 60%; }
+.skills__percentage.skills__html { width: 75%; }
+.skills__percentage.skills__css { width: 75%; }
+.skills__percentage.skills__postgresql { width: 0%; }
+.skills__percentage.skills__vite { width: 0%; }
+.skills__percentage.skills__litelement { width: 0%; }
+.skills__percentage.skills__springboot { width: 0%; }
 
 .skills__close .skills__list {
   height: 0;
