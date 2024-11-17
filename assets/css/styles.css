@@ -332,6 +332,22 @@ img {
   fill: var(--first-color);
 }
 
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px var(--first-color), 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color), 0 0 50px var(--first-color);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--first-color), 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color);
+  }
+}
+
+.glow-effect {
+  animation: glow 2s infinite alternate;
+}
+
 .home__blob-img {
   width: 200px;
   border-radius: 50%;
