@@ -781,6 +781,19 @@ img {
   padding: 0 1.5rem;
 }
 
+.portfolio__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.portfolio__img {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+}
+
 .portfolio__img {
   width: 265px;
   border-radius: 0.5rem;
