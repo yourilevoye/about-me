@@ -22,8 +22,7 @@
 <body>
     <!--=================== LOADING ANIM ===============-->
     <div id="loading">
-        <img src="./assets/img/loading.gif" alt="Loading..." />
-        <div id="loading__text">The icon "Double Ring" is provided by <a href="https://loading.io/icon/">loading.io</a></div>
+        <div class="name-animation">Youri Levoye</div>
     </div>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
@@ -114,11 +113,10 @@
             setTimeout(function() {
                 var loadingDiv = document.getElementById('loading');
                 loadingDiv.style.opacity = '0';
-                // Wait for the transition to finish before setting display to 'none'
                 setTimeout(function() {
                     loadingDiv.style.display = 'none';
-                }, 500); // This should match the duration of the opacity transition found in styles.css!
-            }, 2000); // Minimum time for the loading animation
+                }, 500);
+            }, 2500); // Match the duration of the grow animation
         });
 
         <!--==================== CONTENTS ====================-->
