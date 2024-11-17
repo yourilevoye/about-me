@@ -1,6 +1,6 @@
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
 /*==================== VARIABLES CSS ====================*/
 :root {
   --header-height: 3rem;
@@ -154,17 +154,32 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Just to ensure it's always above other content */
+  z-index: 9999;
   transition: opacity 0.5s ease-out;
   opacity: 1;
 }
 
-#loading__text {
-  position: absolute;
-  bottom: 0; /* Positions the text at the bottom of the parent div */
-  width: 100%; /* Ensures the text is centered according to the parent div */
-  text-align: center; /* Centers the text */
-  margin-bottom: 20px; /* Adds some space from the bottom edge */
+.name-animation {
+  font-family: 'Monsieur La Doulaise', cursive;
+  font-size: 2rem;
+  color: var(--first-color);
+  animation: grow 3s ease-in-out forwards;
+  white-space: nowrap;
+}
+
+@keyframes grow {
+  0% {
+    font-size: 2rem;
+    opacity: 0;
+  }
+  90% {
+    font-size: 8rem;
+    opacity: 1;
+  }
+  100% {
+    font-size: 100rem;
+    opacity: 1;
+  }
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
@@ -319,7 +334,7 @@ img {
 }
 
 .home__social-icon {
-  font-size: 1.25rem;
+  font-size: 2rem;
   color: var(--first-color);
 }
 
@@ -330,6 +345,22 @@ img {
 .home__blob {
   width: 200px;
   fill: var(--first-color);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px var(--first-color), 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color), 0 0 50px var(--first-color);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--first-color), 0 0 20px var(--first-color), 0 0 30px var(--first-color), 0 0 40px var(--first-color);
+  }
+}
+
+.glow-effect {
+  animation: glow 2s infinite alternate;
 }
 
 .home__blob-img {
@@ -541,21 +572,16 @@ img {
   background-color: var(--first-color);
 }
 
-.skills__html {
-  width: 0%;
-}
-
-.skills__css {
-  width: 0%;
-}
-
-.skills__js {
-  width: 0%;
-}
-
-.skills__github{
-  width: 0%;
-}
+/* Skills list */
+.skills__percentage.skills__java { width: 90%; }
+.skills__percentage.skills__js { width: 75%; }
+.skills__percentage.skills__python { width: 60%; }
+.skills__percentage.skills__html { width: 75%; }
+.skills__percentage.skills__css { width: 75%; }
+.skills__percentage.skills__postgresql { width: 0%; }
+.skills__percentage.skills__vite { width: 0%; }
+.skills__percentage.skills__litelement { width: 0%; }
+.skills__percentage.skills__springboot { width: 0%; }
 
 .skills__close .skills__list {
   height: 0;
@@ -753,6 +779,19 @@ img {
 
 .portfolio__content {
   padding: 0 1.5rem;
+}
+
+.portfolio__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.portfolio__img {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
 }
 
 .portfolio__img {
